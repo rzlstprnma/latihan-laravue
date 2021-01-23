@@ -8,6 +8,7 @@ import User from './views/User.vue'
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+    linkActiveClass: 'active',
     mode: 'history',
     routes : [
         {

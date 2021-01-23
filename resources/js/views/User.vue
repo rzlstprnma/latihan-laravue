@@ -6,6 +6,11 @@
         </section>
         <section v-else>
             <h2>Daftar User</h2>
+            <ul>
+                <li v-for="user in users" :key="user.id">
+                    <router-link :to="{name: 'user', params: {name: user.name.toLowerCase()}}">{{user.name}}</router-link>
+                </li>
+            </ul>
         </section>
     </div>
 </template>
@@ -16,7 +21,25 @@ export default {
     components: {
         Header,
     },
-    props: ["name"]
+    props: ["name"],
+    data(){
+        return {
+            users: [
+                {
+                    id: 1,
+                    name: "Ijal",
+                },
+                {
+                    id: 2,
+                    name: "Abah abah",
+                },
+                {
+                    id: 3,
+                    name: "Herp",
+                },
+            ]
+        }
+    }
 }
 </script>
 

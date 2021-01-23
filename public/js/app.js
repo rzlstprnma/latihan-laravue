@@ -1928,8 +1928,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -2044,12 +2042,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Header: _components_Header__WEBPACK_IMPORTED_MODULE_0__.default
   },
-  props: ["name"]
+  props: ["name"],
+  data: function data() {
+    return {
+      users: [{
+        id: 1,
+        name: "Ijal"
+      }, {
+        id: 2,
+        name: "Abah abah"
+      }, {
+        id: 3,
+        name: "Herp"
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -2137,6 +2154,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_4__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_5__.default);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__.default({
+  linkActiveClass: 'active',
   mode: 'history',
   routes: [{
     path: '/',
@@ -20206,13 +20224,13 @@ var render = function() {
   return _c(
     "nav",
     [
-      _c("router-link", { attrs: { to: "{name: 'home'}" } }, [_vm._v("Home")]),
+      _c("router-link", { attrs: { to: { name: "home" } } }, [_vm._v("Home")]),
       _vm._v(" "),
-      _c("router-link", { attrs: { to: "{name: 'about'}" } }, [
+      _c("router-link", { attrs: { to: { name: "about" } } }, [
         _vm._v("About")
       ]),
       _vm._v(" "),
-      _c("router-link", { attrs: { to: "{name: 'user'}" } }, [_vm._v("User")])
+      _c("router-link", { attrs: { to: { name: "user" } } }, [_vm._v("User")])
     ],
     1
   )
@@ -20240,7 +20258,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("router-view")], 1)
+  return _c("router-view")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20305,7 +20323,7 @@ var render = function() {
     [
       _c("Header"),
       _vm._v(" "),
-      _c("example-component"),
+      _c("h1", [_vm._v("Home")]),
       _vm._v(" "),
       _c("Footer")
     ],
@@ -20367,7 +20385,35 @@ var render = function() {
       _vm._v(" "),
       _vm.name
         ? _c("section", [_c("h1", [_vm._v("User: " + _vm._s(_vm.name))])])
-        : _c("section", [_c("h2", [_vm._v("Daftar User")])])
+        : _c("section", [
+            _c("h2", [_vm._v("Daftar User")]),
+            _vm._v(" "),
+            _c(
+              "ul",
+              _vm._l(_vm.users, function(user) {
+                return _c(
+                  "li",
+                  { key: user.id },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: {
+                          to: {
+                            name: "user",
+                            params: { name: user.name.toLowerCase() }
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(user.name))]
+                    )
+                  ],
+                  1
+                )
+              }),
+              0
+            )
+          ])
     ],
     1
   )

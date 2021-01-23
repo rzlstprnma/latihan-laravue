@@ -1,7 +1,7 @@
 <template>
     <div>
         <Header/>
-        <example-component/>
+        <h1>Home</h1>
         <Footer/>
     </div>
 </template>
